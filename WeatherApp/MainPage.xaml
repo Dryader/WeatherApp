@@ -31,6 +31,12 @@
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Fill" />
+            <Button
+                Text="Go to Weather Page"
+                x:Name="WeatherLabel"
+                Clicked="OnWeatherClicked"
+                HorizontalOptions="Fill"
+                SemanticProperties.Description="Navigates to the weather page" />
         </VerticalStackLayout>
     </ScrollView>
 
