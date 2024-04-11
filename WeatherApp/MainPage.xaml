@@ -15,7 +15,7 @@
 
         <StackLayout Grid.Row="1">
             <Label Text="Enter a city name" FontSize="Large" />
-            <Entry x:Name="cityEntry" Placeholder="City name" FontSize="Large" Text="L6L2H4,CA" />
+            <Entry x:Name="cityEntry" Placeholder="City name" FontSize="Large" Text="L6L2H7" />
         </StackLayout>
 
 
