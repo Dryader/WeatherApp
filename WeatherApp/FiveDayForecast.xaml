@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.FiveDayForecast">
+    <ContentPage.Content>
+
+        <StackLayout>
+            <Label Text="Five Day Forecast"
+                   FontSize="Large"
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand" />
+            <CollectionView x:Name="forecastCollectionView"
+                            ItemsSource="{Binding Forecast}"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding Date}"
+                                   FontSize="Large"
+                                   HorizontalOptions="Center" />
+                            <Label Text="{Binding Temperature}"
+                                   FontSize="Medium"
+                                   HorizontalOptions="Center" />
+                            <Label Text="{Binding Description}"
+                                   FontSize="Medium"
+                                   HorizontalOptions="Center" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
