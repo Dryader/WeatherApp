@@ -15,9 +15,17 @@
 
         <StackLayout Grid.Row="1">
             <Label Text="Enter a city name" FontSize="Large" />
-            <Entry x:Name="cityEntry" Placeholder="City name" FontSize="Large" Text="L6L2H7" />
+            <Entry x:Name="CityEntry" Placeholder="City name" FontSize="Large" Text="L6L2H7" />
+            <Label Text="Temperature" />
+            <Label x:Name="Temperature" />
+            <Label Text="Description" />
+            <Label x:Name="Description" />
+            <Label Text="Humidity" />
+            <Label x:Name="Humidity" />
+            <Label Text="Wind" />
+            <Label x:Name="Windd" />
         </StackLayout>
-
+        <Image Grid.Row="1" x:Name="TempIcon" Source="uri" />
 
     </Grid>
 
