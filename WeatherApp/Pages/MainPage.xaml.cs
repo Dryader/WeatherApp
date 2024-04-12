@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace WeatherApp;
+namespace WeatherApp.Pages;
 
 public partial class MainPage : ContentPage
 {
@@ -12,6 +12,11 @@ public partial class MainPage : ContentPage
     private void WeatherButton_Clicked(object sender, EventArgs e)
     {
         GetLocationDataUsingPostalCode();
+    }
+
+    private void ViewForecastButton_Clicked(Object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new FiveDayForecast());
     }
 
     private async void GetWeatherData(double latitude, double longitude)

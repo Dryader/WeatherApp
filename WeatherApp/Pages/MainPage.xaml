@@ -2,7 +2,7 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeatherApp.MainPage"
+             x:Class="WeatherApp.Pages.MainPage"
              Title=""
              BackgroundImageSource="city_background.jpg">
     
@@ -17,7 +17,7 @@
 
             <Image x:Name="TempIcon" Source="placeholder_circle.png" MaximumHeightRequest="200"/>
 
-            <Entry x:Name="CityEntry" Placeholder="Enter Your City's Name" FontSize="Large" HorizontalTextAlignment="Center"/>
+            <Entry x:Name="CityEntry" Placeholder="Enter Your City's Name or Postal Code" FontSize="Large" HorizontalTextAlignment="Center"/>
 
             <Button x:Name="WeatherButton" 
                     Text="Get Weather"
@@ -29,6 +29,12 @@
             <Label x:Name="Description" HorizontalOptions="Center" Margin="20"/>
             <Label x:Name="Humidity" HorizontalOptions="Center" Margin="20"/>
             <Label x:Name="WindLocal" HorizontalOptions="Center" Margin="20"/>
+
+            <Button x:Name="ViewForecast"
+                    Text="Details"
+                    LineBreakMode="WordWrap"
+                    Margin="20"
+                    Clicked="ViewForecastButton_Clicked"/>
 
         </VerticalStackLayout>
     </Grid>
