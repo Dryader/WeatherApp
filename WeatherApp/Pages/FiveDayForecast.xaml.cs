@@ -1,13 +1,15 @@
 ﻿using System.Text.Json;
 
-namespace WeatherApp;
+namespace WeatherApp.Pages;
 
 public partial class FiveDayForecast : ContentPage
 {
     public FiveDayForecast()
     {
         InitializeComponent();
+        BindingContext = this;
     }
+
 
     private async void GetFiveDayForecast(double latitude, double longitude)
     {
