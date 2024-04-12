@@ -1,6 +1,6 @@
 ﻿namespace WeatherApp.BusinessLogic;
 
-public class fiveDayForecast
+public abstract class fiveDayForecast
 {
     public class RootObject
     {
