@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace WeatherApp.BusinessLogic;
+namespace WeatherApp;
 
 public static class MauiProgram
 {

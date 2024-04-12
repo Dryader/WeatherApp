@@ -47,7 +47,7 @@ public partial class MainPage : ContentPage
         var client = new HttpClient();
         var response = await client.GetAsync(url);
         var data = await response.Content.ReadAsStringAsync();
-        var locationData = JsonSerializer.Deserialize<Geocoding.RootObject>(data);
+        var locationData = JsonSerializer.Deserialize<GeocodingLogic.RootObject>(data);
         GetWeatherData(locationData.lat, locationData.lon);
     }
 }
