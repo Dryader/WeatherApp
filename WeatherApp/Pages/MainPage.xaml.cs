@@ -28,14 +28,14 @@ public partial class MainPage : ContentPage
         var data = await response.Content.ReadAsStringAsync();
         var weatherData = JsonSerializer.Deserialize<CurrentWeather.RootObject>(data);
         var temp = weatherData.main.temp;
-        Temperature.Text = "Temperature: "+ temp.ToString();
+        Temperature.Text = "Temperature: "+ temp.ToString() + "°C";
         var description = weatherData.weather[0].description;
         var icon = weatherData.weather[0].icon;
         var iconUrl = $"https://openweathermap.org/img/wn/{icon}@2x.png";
         TempIcon.Source = iconUrl;
         Description.Text = "Description: " + description;
-        Humidity.Text = "Humidity: " + weatherData.main.humidity.ToString();
-        WindLocal.Text = "Wind: " + weatherData.wind.speed.ToString();
+        Humidity.Text = "Humidity: " + weatherData.main.humidity.ToString() + "%";
+        WindLocal.Text = "Wind: " + weatherData.wind.speed.ToString() + "km/h";
     }
 
     private async void GetLocationDataUsingPostalCode()
@@ -48,6 +48,5 @@ public partial class MainPage : ContentPage
         var data = await response.Content.ReadAsStringAsync();
         var locationData = JsonSerializer.Deserialize<Geocoding.RootObject>(data);
         GetWeatherData(locationData.lat, locationData.lon);
-        CityEntry.Text = locationData.name;
     }
 }

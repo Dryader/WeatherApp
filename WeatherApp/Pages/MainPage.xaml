@@ -25,16 +25,19 @@
                     Margin="25, 15, 25, 40"
                     Clicked="WeatherButton_Clicked"/>
 
-            <Label x:Name="Temperature" HorizontalOptions="Center" Margin="20"/>
-            <Label x:Name="Description" HorizontalOptions="Center" Margin="20"/>
-            <Label x:Name="Humidity" HorizontalOptions="Center" Margin="20"/>
-            <Label x:Name="WindLocal" HorizontalOptions="Center" Margin="20"/>
+            <Label x:Name="Temperature" HorizontalOptions="Center" Margin="10"/>
+            <Label x:Name="Description" HorizontalOptions="Center" Margin="10"/>
+            <Label x:Name="Humidity" HorizontalOptions="Center" Margin="10"/>
+            <Label x:Name="WindLocal" HorizontalOptions="Center" Margin="10"/>
 
-            <Button x:Name="ViewForecast"
-                    Text="Details"
-                    LineBreakMode="WordWrap"
-                    Margin="20"
-                    Clicked="ViewForecastButton_Clicked"/>
+            <Grid ColumnDefinitions="*,*,*">
+                <Button x:Name="ViewForecast"
+                        Grid.Column="1"
+                        Text="Details"
+                        LineBreakMode="WordWrap"
+                        Margin="20"
+                        Clicked="ViewForecastButton_Clicked"/>
+            </Grid>
 
         </VerticalStackLayout>
     </Grid>
