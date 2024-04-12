@@ -6,32 +6,34 @@
              Title=""
              BackgroundColor="#052940">
     <ContentPage.Content>
-
-        <StackLayout>
-            <Label Text="Five Day Forecast"
-                   FontSize="Large"
-                   HorizontalOptions="Center"
-                   VerticalOptions="CenterAndExpand" />
-            <CollectionView x:Name="forecastCollectionView"
-                            ItemsSource="{Binding Path=ForecastData}"
-                            SelectionMode="None">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout>
+        <ListView x:Name="forecastListView"
+                  BackgroundColor="#052940"
+                  SeparatorVisibility="None"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
                             <Label Text="{Binding Date}"
-                                   FontSize="Large"
-                                   HorizontalOptions="Center" />
-                            <Label Text="{Binding Temperature}"
-                                   FontSize="Medium"
-                                   HorizontalOptions="Center" />
+                                   TextColor="White"
+                                   FontSize="20"
+                                   FontAttributes="Bold" />
                             <Label Text="{Binding Description}"
-                                   FontSize="Medium"
-                                   HorizontalOptions="Center" />
+                                   TextColor="White"
+                                   FontSize="16" />
+                            <Label Text="{Binding Temperature}"
+                                   TextColor="White"
+                                   FontSize="16" />
+                            <Image Source="{Binding Icon}"
+                                   HeightRequest="50"
+                                   WidthRequest="50" />
                         </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+
 
     </ContentPage.Content>
 </ContentPage>

@@ -38,7 +38,6 @@ public partial class MainPage : ContentPage
         var weatherData = JsonSerializer.Deserialize<CurrentWeather.RootObject>(data);
         Temperature.Text = "Temperature: " + weatherData.main.temp + "°C";
         TempIcon.Source = $"https://openweathermap.org/img/wn/{weatherData.weather[0].icon}@2x.png";
-        ;
         Description.Text = weatherData.weather[0].description;
         Humidity.Text = "Humidity: " + weatherData.main.humidity + "%";
         WindLocal.Text = "Wind: " + weatherData.wind.speed + "km/h";
@@ -46,9 +45,8 @@ public partial class MainPage : ContentPage
 
     private async void GetLocationDataUsingPostalCode()
     {
-        var postalCode = CityEntry.Text;
         var url =
-            $"https://api.openweathermap.org/geo/1.0/zip?zip={postalCode},CA&appid=af814f7c81ec8ac0ad157b953140d72e";
+            $"https://api.openweathermap.org/geo/1.0/zip?zip={CityEntry.Text},CA&appid=af814f7c81ec8ac0ad157b953140d72e";
         var client = new HttpClient();
         var response = await client.GetAsync(url);
         var data = await response.Content.ReadAsStringAsync();
