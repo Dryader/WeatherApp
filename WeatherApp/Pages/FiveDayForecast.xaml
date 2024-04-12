@@ -21,7 +21,7 @@
                             <Label Text="{Binding Description}"
                                    TextColor="White"
                                    FontSize="16" />
-                            <Label Text="{Binding Temperature}"
+                            <Label Text="{Binding forecastTemps}"
                                    TextColor="White"
                                    FontSize="16" />
                             <Image Source="{Binding Icon}"
