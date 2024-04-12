@@ -1,4 +1,4 @@
-﻿namespace WeatherApp;
+﻿namespace WeatherApp.BusinessLogic;
 
 public class CurrentWeather
 {
