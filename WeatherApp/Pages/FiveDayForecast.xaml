@@ -13,7 +13,7 @@
                    HorizontalOptions="Center"
                    VerticalOptions="CenterAndExpand" />
             <CollectionView x:Name="forecastCollectionView"
-                            ItemsSource="{Binding Forecast}"
+                            ItemsSource="{Binding Path=ForecastData}"
                             SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

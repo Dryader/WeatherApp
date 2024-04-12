@@ -28,14 +28,14 @@ public partial class MainPage : ContentPage
         var data = await response.Content.ReadAsStringAsync();
         var weatherData = JsonSerializer.Deserialize<CurrentWeather.RootObject>(data);
         var temp = weatherData.main.temp;
-        Temperature.Text = temp.ToString();
+        Temperature.Text = "Temperature: "+ temp.ToString();
         var description = weatherData.weather[0].description;
         var icon = weatherData.weather[0].icon;
         var iconUrl = $"https://openweathermap.org/img/wn/{icon}@2x.png";
         TempIcon.Source = iconUrl;
-        Description.Text = description;
-        Humidity.Text = weatherData.main.humidity.ToString();
-        WindLocal.Text = weatherData.wind.speed.ToString();
+        Description.Text = "Description: " + description;
+        Humidity.Text = "Humidity: " + weatherData.main.humidity.ToString();
+        WindLocal.Text = "Wind: " + weatherData.wind.speed.ToString();
     }
 
     private async void GetLocationDataUsingPostalCode()
