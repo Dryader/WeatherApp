@@ -12,7 +12,6 @@ public partial class FiveDayForecast : ContentPage
         GetFiveDayForecast(43.7, -79.42);
     }
 
-
     private async void GetFiveDayForecast(double latitude, double longitude)
     {
         var url =
