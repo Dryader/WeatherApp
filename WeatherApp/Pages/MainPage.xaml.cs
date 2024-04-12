@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using WeatherApp.BusinessLogic;
+using Geocoding = WeatherApp.BusinessLogic.Geocoding;
 
 namespace WeatherApp.Pages;
 
@@ -13,9 +14,16 @@ public partial class MainPage : ContentPage
     private void WeatherButton_Clicked(object sender, EventArgs e)
     {
         GetLocationDataUsingPostalCode();
+        // var weatherDataTask = CurrentWeather.GetWeatherData(43.7, -79.42);
+        //
+        // Temperature.Text = weatherDataTask.Result.temp.ToString();
+        // TempIcon.Source = weatherDataTask.Result.iconUrl;
+        // Description.Text = weatherDataTask.Result.description;
+        // Humidity.Text = weatherDataTask.Result.weatherData.main.humidity.ToString();
+        // WindLocal.Text = weatherDataTask.Result.weatherData.wind.speed.ToString();
     }
 
-    private void ViewForecastButton_Clicked(Object sender, EventArgs e)
+    private void ViewForecastButton_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new FiveDayForecast());
     }
@@ -29,14 +37,14 @@ public partial class MainPage : ContentPage
         var data = await response.Content.ReadAsStringAsync();
         var weatherData = JsonSerializer.Deserialize<CurrentWeather.RootObject>(data);
         var temp = weatherData.main.temp;
-        Temperature.Text = "Temperature: "+ temp.ToString() + "°C";
         var description = weatherData.weather[0].description;
         var icon = weatherData.weather[0].icon;
         var iconUrl = $"https://openweathermap.org/img/wn/{icon}@2x.png";
+        Temperature.Text = "Temperature: " + temp + "°C";
         TempIcon.Source = iconUrl;
-        Description.Text = "Description: " + description;
-        Humidity.Text = "Humidity: " + weatherData.main.humidity.ToString() + "%";
-        WindLocal.Text = "Wind: " + weatherData.wind.speed.ToString() + "km/h";
+        Description.Text = description;
+        Humidity.Text = "Humidity: " + weatherData.main.humidity + "%";
+        WindLocal.Text = "Wind: " + weatherData.wind.speed + "km/h";
     }
 
     private async void GetLocationDataUsingPostalCode()
@@ -49,5 +57,6 @@ public partial class MainPage : ContentPage
         var data = await response.Content.ReadAsStringAsync();
         var locationData = JsonSerializer.Deserialize<GeocodingLogic.RootObject>(data);
         GetWeatherData(locationData.lat, locationData.lon);
+        CityEntry.Text = locationData.name;
     }
 }
