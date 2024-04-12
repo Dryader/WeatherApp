@@ -1,6 +1,6 @@
 ﻿namespace WeatherApp.BusinessLogic;
 
-public class CurrentWeather
+public abstract class CurrentWeather
 {
     public class RootObject
     {

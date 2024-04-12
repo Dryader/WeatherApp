@@ -1,6 +1,6 @@
 ﻿namespace WeatherApp.BusinessLogic;
 
-public class Geocoding
+public abstract class Geocoding
 {
     public class RootObject
     {
