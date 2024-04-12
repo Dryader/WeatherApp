@@ -8,7 +8,8 @@ public partial class FiveDayForecast : ContentPage
     public FiveDayForecast()
     {
         InitializeComponent();
-        BindingContext = this;
+
+        GetFiveDayForecast(43.7, -79.42);
     }
 
 

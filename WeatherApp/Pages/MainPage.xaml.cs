@@ -36,13 +36,10 @@ public partial class MainPage : ContentPage
         var response = await client.GetAsync(url);
         var data = await response.Content.ReadAsStringAsync();
         var weatherData = JsonSerializer.Deserialize<CurrentWeather.RootObject>(data);
-        var temp = weatherData.main.temp;
-        var description = weatherData.weather[0].description;
-        var icon = weatherData.weather[0].icon;
-        var iconUrl = $"https://openweathermap.org/img/wn/{icon}@2x.png";
-        Temperature.Text = "Temperature: " + temp + "°C";
-        TempIcon.Source = iconUrl;
-        Description.Text = description;
+        Temperature.Text = "Temperature: " + weatherData.main.temp + "°C";
+        TempIcon.Source = $"https://openweathermap.org/img/wn/{weatherData.weather[0].icon}@2x.png";
+        ;
+        Description.Text = weatherData.weather[0].description;
         Humidity.Text = "Humidity: " + weatherData.main.humidity + "%";
         WindLocal.Text = "Wind: " + weatherData.wind.speed + "km/h";
     }
