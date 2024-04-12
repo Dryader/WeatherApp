@@ -7,27 +7,29 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
+    }
+
+    private void WeatherButton_Clicked(object sender, EventArgs e)
+    {
         GetLocationDataUsingPostalCode();
     }
 
-
     private async void GetWeatherData(double latitude, double longitude)
     {
-        var url =
-            $"https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid=af814f7c81ec8ac0ad157b953140d72e&units=metric";
+        var url = $"https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid=af814f7c81ec8ac0ad157b953140d72e&units=metric";
         var client = new HttpClient();
         var response = await client.GetAsync(url);
         var data = await response.Content.ReadAsStringAsync();
         var WeatherData = JsonSerializer.Deserialize<Root>(data);
         var temp = WeatherData.main.temp;
-        Temperature.Text = temp.ToString();
-        var description = WeatherData.weather[0].description;
+        Temperature.Text = "Temperature: " + temp.ToString();
+        var description = "Description: " + WeatherData.weather[0].description;
         var icon = WeatherData.weather[0].icon;
         var iconUrl = $"https://openweathermap.org/img/wn/{icon}@2x.png";
         TempIcon.Source = iconUrl;
         Description.Text = description;
-        Humidity.Text = WeatherData.main.humidity.ToString();
-        Windd.Text = WeatherData.wind.speed.ToString();
+        Humidity.Text = "Humidity: " + WeatherData.main.humidity.ToString();
+        WindLocal.Text = "Wind: " + WeatherData.wind.speed.ToString();
     }
 
     private async void GetLocationDataUsingPostalCode()

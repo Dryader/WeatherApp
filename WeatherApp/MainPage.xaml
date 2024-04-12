@@ -2,31 +2,34 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeatherApp.MainPage">
+             x:Class="WeatherApp.MainPage"
+             Title=""
+             BackgroundImageSource="city_background.jpg">
+    
     <!-- main weather page -->
-    <Grid>
+    <Grid ColumnDefinitions="*,*,*">
+        <VerticalStackLayout Grid.Column="1" BackgroundColor="#052940">
+            <Label 
+                HorizontalTextAlignment="Center"
+                Margin="50"
+                Text="Weather App"
+                FontAttributes="Bold"/>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+            <Image x:Name="TempIcon" Source="placeholder_circle.png" MaximumHeightRequest="200"/>
 
-        <Label Text="Weather App" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Entry x:Name="CityEntry" Placeholder="Enter Your City's Name" FontSize="Large" HorizontalTextAlignment="Center"/>
 
-        <StackLayout Grid.Row="1">
-            <Label Text="Enter a city name" FontSize="Large" />
-            <Entry x:Name="CityEntry" Placeholder="City name" FontSize="Large" Text="L6L2H7" />
-            <Label Text="Temperature" />
-            <Label x:Name="Temperature" />
-            <Label Text="Description" />
-            <Label x:Name="Description" />
-            <Label Text="Humidity" />
-            <Label x:Name="Humidity" />
-            <Label Text="Wind" />
-            <Label x:Name="Windd" />
-        </StackLayout>
-        <Image Grid.Row="1" x:Name="TempIcon" Source="uri" />
+            <Button x:Name="WeatherButton" 
+                    Text="Get Weather"
+                    LineBreakMode="WordWrap"
+                    Margin="25, 15, 25, 40"
+                    Clicked="WeatherButton_Clicked"/>
 
+            <Label x:Name="Temperature" HorizontalOptions="Center" Margin="20"/>
+            <Label x:Name="Description" HorizontalOptions="Center" Margin="20"/>
+            <Label x:Name="Humidity" HorizontalOptions="Center" Margin="20"/>
+            <Label x:Name="WindLocal" HorizontalOptions="Center" Margin="20"/>
+
+        </VerticalStackLayout>
     </Grid>
-
 </ContentPage>
