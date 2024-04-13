@@ -4,34 +4,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Pages.FiveDayForecast"
              Title=""
-             BackgroundColor="#052940">
+             BackgroundImageSource="city_background.jpg">
     <ContentPage.Content>
         <Grid ColumnDefinitions="*,*,*">
-            <ListView 
-                Grid.Column="1"
-                x:Name="forecastListView"
-                BackgroundColor="#052940"
-                SeparatorVisibility="None"
-                HasUnevenRows="True"
-                HorizontalOptions="Center"
-                VerticalOptions="Center">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.View>
-                                <VerticalStackLayout>
-                                    <Image Source="{Binding Path=Icon}" MaximumHeightRequest="200"/>
-                                    <Label 
-                            Text="{Binding Path=Temp}"
-                            FontSize="Large"
-                            TextColor="White"
-                            HorizontalOptions="Start"/>
-                                </VerticalStackLayout>
-                            </ViewCell.View>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <VerticalStackLayout Grid.Column="1" BackgroundColor="#052940">
+                <Label 
+                    HorizontalTextAlignment="Center"
+                    Margin="50"
+                    Text="Next Five Days"
+                    FontAttributes="Bold"/>
+                <ListView
+                    x:Name="forecastListView"
+                    SeparatorVisibility="None"
+                    HasUnevenRows="True"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <VerticalStackLayout Margin="20">
+                                        <Image Source="{Binding Path=Icon}" MaximumHeightRequest="200"/>
+                                        <Label
+                                            Text="{Binding Path=Day}"
+                                            FontSize="Large"
+                                            TextColor="White"
+                                            HorizontalOptions="Center"/>
+                                        <Label
+                                            Text="{Binding Path=Temp, StringFormat='{0}°C'}"
+                                            FontSize="Large"
+                                            TextColor="White"
+                                            HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </VerticalStackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
