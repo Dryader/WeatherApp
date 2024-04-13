@@ -53,6 +53,13 @@ public partial class MainPage : ContentPage
         var response = await client.GetAsync(url);
         var data = await response.Content.ReadAsStringAsync();
         var locationData = JsonSerializer.Deserialize<GeocodingLogic.RootObject>(data);
+        //check if postal code is valid
+        if (locationData.lat == 0 && locationData.lon == 0)
+        {
+            CityEntry.Text = "Invalid Postal Code";
+            return;
+        }
+
         GetWeatherData(locationData.lat, locationData.lon);
         CityEntry.Text = locationData.name;
     }
