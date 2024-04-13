@@ -23,9 +23,6 @@ public partial class FiveDayForecast : ContentPage
         var forecastList = new List<fiveDayForecast.List>(ForecastData.list);
         var forecastTimes = new List<string>();
         var forecastTemps = new List<double>();
-        // var forecastList2 = new List<fiveDayForecast.List>(forecastTemps);
-        forecastListView.ItemsSource = forecastTemps.ToString();
-
 
         foreach (var forecast in forecastList)
             if (forecast.dt_txt.Contains("12:00:00"))
@@ -35,6 +32,8 @@ public partial class FiveDayForecast : ContentPage
                 forecastTimes.Add(day);
                 forecastTemps.Add(forecast.main.temp);
             }
+
+        forecastListView.ItemsSource = forecastTemps;
     }
 
     private async void GetLocationDataUsingPostalCode()
