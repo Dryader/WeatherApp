@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 using WeatherApp.BusinessLogic;
-using Geocoding = WeatherApp.BusinessLogic.Geocoding;
+using Geocoding = WeatherApp.BusinessLogic.GeocodingLogic;
 
 namespace WeatherApp.Pages;
 
