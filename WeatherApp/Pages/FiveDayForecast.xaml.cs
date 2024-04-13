@@ -21,7 +21,20 @@ public partial class FiveDayForecast : ContentPage
         var data = await response.Content.ReadAsStringAsync();
         var ForecastData = JsonSerializer.Deserialize<fiveDayForecast.RootObject>(data);
         var forecastList = new List<fiveDayForecast.List>(ForecastData.list);
-        forecastListView.ItemsSource = forecastList;
+        var forecastTimes = new List<string>();
+        var forecastTemps = new List<double>();
+        // var forecastList2 = new List<fiveDayForecast.List>(forecastTemps);
+        forecastListView.ItemsSource = forecastTemps.ToString();
+
+
+        foreach (var forecast in forecastList)
+            if (forecast.dt_txt.Contains("12:00:00"))
+            {
+                var forecastDate = DateTime.Parse(forecast.dt_txt);
+                var day = forecastDate.DayOfWeek.ToString();
+                forecastTimes.Add(day);
+                forecastTemps.Add(forecast.main.temp);
+            }
     }
 
     private async void GetLocationDataUsingPostalCode()
