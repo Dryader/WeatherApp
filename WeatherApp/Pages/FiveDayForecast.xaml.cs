@@ -5,10 +5,19 @@ namespace WeatherApp.Pages;
 
 public partial class FiveDayForecast : ContentPage
 {
+    string postalCode = string.Empty;
+
     public FiveDayForecast()
     {
         InitializeComponent();
+        BindingContext = this;
+
         GetLocationDataUsingPostalCode();
+    }
+
+    public FiveDayForecast(string postalCode) : this()
+    {
+        this.postalCode = postalCode;
     }
 
     private async void GetFiveDayForecast(double latitude, double longitude)
@@ -52,7 +61,7 @@ public partial class FiveDayForecast : ContentPage
     private async void GetLocationDataUsingPostalCode()
     {
         var url =
-            "https://api.openweathermap.org/geo/1.0/zip?zip=L6L2H4,CA&appid=af814f7c81ec8ac0ad157b953140d72e";
+            $"https://api.openweathermap.org/geo/1.0/zip?zip={postalCode},CA&appid=af814f7c81ec8ac0ad157b953140d72e";
         var client = new HttpClient();
         var response = await client.GetAsync(url);
         var data = await response.Content.ReadAsStringAsync();
