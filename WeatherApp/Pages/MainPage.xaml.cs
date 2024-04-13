@@ -24,7 +24,7 @@ public partial class MainPage : ContentPage
 
     private void ViewForecastButton_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new FiveDayForecast(CityEntry.Text));
+        Navigation.PushAsync(new FiveDayForecast());
     }
 
     private async void GetWeatherData(double latitude, double longitude)
