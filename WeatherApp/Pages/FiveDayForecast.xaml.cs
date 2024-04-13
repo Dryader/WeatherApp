@@ -34,6 +34,15 @@ public partial class FiveDayForecast : ContentPage
             }
 
         forecastListView.ItemsSource = forecastTemps;
+
+        var forecastData = new List<ForecastData>();
+        for (var i = 0; i < forecastTimes.Count; i++)
+            forecastData.Add(new ForecastData
+            {
+                Day = forecastTimes[i],
+                Temp = forecastTemps[i],
+                Icon = forecastList[i].weather[0].icon
+            });
     }
 
     private async void GetLocationDataUsingPostalCode()
@@ -47,4 +56,11 @@ public partial class FiveDayForecast : ContentPage
         GetFiveDayForecast(locationData.lat, locationData.lon);
         // CityEntry.Text = locationData.name;
     }
+}
+
+internal class ForecastData
+{
+    public string Day { get; set; }
+    public double Temp { get; set; }
+    public string Icon { get; set; }
 }
