@@ -18,8 +18,7 @@
                     SeparatorVisibility="None"
                     HasUnevenRows="True"
                     HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    VerticalScrollBarVisibility="Always">
+                    VerticalOptions="Center">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
