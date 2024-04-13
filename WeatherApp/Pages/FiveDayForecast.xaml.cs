@@ -33,8 +33,6 @@ public partial class FiveDayForecast : ContentPage
                 forecastTemps.Add(forecast.main.temp);
             }
 
-        forecastListView.ItemsSource = forecastTemps;
-
         var forecastData = new List<ForecastData>();
         for (var i = 0; i < forecastTimes.Count; i++)
             forecastData.Add(new ForecastData
@@ -43,6 +41,8 @@ public partial class FiveDayForecast : ContentPage
                 Temp = forecastTemps[i],
                 Icon = forecastList[i].weather[0].icon
             });
+
+        forecastListView.ItemsSource = forecastData;
     }
 
     private async void GetLocationDataUsingPostalCode()

@@ -6,34 +6,32 @@
              Title=""
              BackgroundColor="#052940">
     <ContentPage.Content>
-        <ListView x:Name="forecastListView"
-                  BackgroundColor="#052940"
-                  SeparatorVisibility="None"
-                  HasUnevenRows="True">
-            <!-- <ListView.ItemTemplate> -->
-            <!--     <DataTemplate> -->
-            <!--         <ViewCell> -->
-            <!--             <StackLayout Padding="10"> -->
-            <!--                 <Label Text="{Binding Date}" -->
-            <!--                        TextColor="White" -->
-            <!--                        FontSize="20" -->
-            <!--                        FontAttributes="Bold" /> -->
-            <!--                 <Label Text="{Binding Description}" -->
-            <!--                        TextColor="White" -->
-            <!--                        FontSize="16" /> -->
-            <!--                 <Label Text="{Binding forecastTemps}" -->
-            <!--                        TextColor="White" -->
-            <!--                        FontSize="16" /> -->
-            <!--                 <Image Source="{Binding Icon}" -->
-            <!--                        HeightRequest="50" -->
-            <!--                        WidthRequest="50" /> -->
-            <!--             </StackLayout> -->
-            <!--         </ViewCell> -->
-            <!--     </DataTemplate> -->
-            <!-- </ListView.ItemTemplate> -->
-        </ListView>
-        
-
-
+        <Grid ColumnDefinitions="*,*,*">
+            <ListView 
+                Grid.Column="1"
+                x:Name="forecastListView"
+                BackgroundColor="#052940"
+                SeparatorVisibility="None"
+                HasUnevenRows="True"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <VerticalStackLayout>
+                                    <Image Source="{Binding Path=Icon}" MaximumHeightRequest="200"/>
+                                    <Label 
+                            Text="{Binding Path=Temp}"
+                            FontSize="Large"
+                            TextColor="White"
+                            HorizontalOptions="Start"/>
+                                </VerticalStackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
