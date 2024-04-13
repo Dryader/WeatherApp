@@ -1,6 +1,5 @@
 ﻿using System.Text.Json;
 using WeatherApp.BusinessLogic;
-using Geocoding = WeatherApp.BusinessLogic.GeocodingLogic;
 
 namespace WeatherApp.Pages;
 
@@ -41,6 +40,9 @@ public partial class MainPage : ContentPage
         Description.Text = weatherData.weather[0].description;
         Humidity.Text = "Humidity: " + weatherData.main.humidity + "%";
         WindLocal.Text = "Wind: " + weatherData.wind.speed + "km/h";
+        FeelsLike.Text = "Feels Like: " + weatherData.main.feels_like + "°C";
+        MinTemp.Text = "Min Temp: " + weatherData.main.temp_min + "°C";
+        MaxTemp.Text = "Max Temp: " + weatherData.main.temp_max + "°C";
     }
 
     private async void GetLocationDataUsingPostalCode()
