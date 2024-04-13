@@ -23,7 +23,8 @@ public partial class FiveDayForecast : ContentPage
         var forecastList = new List<fiveDayForecast.List>(ForecastData.list);
         var forecastTimes = new List<string>();
         var forecastTemps = new List<double>();
-
+        var iconurllist = new List<string>();
+        // var iconurl = $"https://openweathermap.org/img/wn/{iconurllist}@2x.png";
         foreach (var forecast in forecastList)
             if (forecast.dt_txt.Contains("12:00:00"))
             {
@@ -31,6 +32,7 @@ public partial class FiveDayForecast : ContentPage
                 var day = forecastDate.DayOfWeek.ToString();
                 forecastTimes.Add(day);
                 forecastTemps.Add(forecast.main.temp);
+                iconurllist.Add(forecast.weather[0].icon);
             }
 
         var forecastData = new List<ForecastData>();
@@ -52,7 +54,7 @@ public partial class FiveDayForecast : ContentPage
         var client = new HttpClient();
         var response = await client.GetAsync(url);
         var data = await response.Content.ReadAsStringAsync();
-        var locationData = JsonSerializer.Deserialize<Geocoding.RootObject>(data);
+        var locationData = JsonSerializer.Deserialize<GeocodingLogic.RootObject>(data);
         GetFiveDayForecast(locationData.lat, locationData.lon);
         // CityEntry.Text = locationData.name;
     }
