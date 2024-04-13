@@ -25,7 +25,7 @@ public partial class FiveDayForecast : ContentPage
         var forecastTimes = new List<string>();
         var forecastTemps = new List<double>();
         // var forecastList2 = new List<fiveDayForecast.List>(forecastTemps);
-        forecastListView.ItemsSource = forecastList;
+        forecastListView.ItemsSource = forecastTemps.ToString();
 
 
         foreach (var forecast in forecastList)
