@@ -6,42 +6,50 @@
              Title=""
              BackgroundImageSource="city_background.jpg">
     <ContentPage.Content>
-        <Grid ColumnDefinitions="*,*,*">
-            <VerticalStackLayout Grid.Column="1" BackgroundColor="#052940">
-                <Label 
-                    HorizontalTextAlignment="Center"
-                    Margin="50"
-                    Text="Next Five Days"
-                    FontAttributes="Bold"/>
-                <ListView
-                    x:Name="forecastListView"
-                    SeparatorVisibility="None"
-                    HasUnevenRows="True"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <ViewCell.View>
-                                    <VerticalStackLayout Margin="20">
-                                        <Image Source="{Binding Path=Icon}" MaximumHeightRequest="200"/>
-                                        <Label
-                                            Text="{Binding Path=Day}"
-                                            FontSize="Large"
-                                            TextColor="White"
-                                            HorizontalOptions="Center"/>
-                                        <Label
-                                            Text="{Binding Path=Temp, StringFormat='{0}°C'}"
-                                            FontSize="Large"
-                                            TextColor="White"
-                                            HorizontalOptions="Center"/>
-                                    </VerticalStackLayout>
-                                </ViewCell.View>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </VerticalStackLayout>
-        </Grid>
+        <ScrollView>
+            <Grid ColumnDefinitions="*,*,*">
+                <VerticalStackLayout Grid.Column="1" BackgroundColor="#052940">
+                    <Label
+                        HorizontalTextAlignment="Center"
+                        Margin="50"
+                        Text="Next Five Days"
+                        FontAttributes="Bold" />
+                    <ListView
+                        x:Name="forecastListView"
+                        SeparatorVisibility="None"
+                        HasUnevenRows="True"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        VerticalScrollBarVisibility="Always">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <VerticalStackLayout Margin="20">
+                                            <Image Source="{Binding Path=Icon}" MaximumHeightRequest="200" />
+                                            <Label
+                                                Text="{Binding Path=Day}"
+                                                FontSize="Large"
+                                                TextColor="White"
+                                                HorizontalOptions="Center" />
+                                            <Label
+                                                Text="{Binding Path=Temp, StringFormat='{0}°C'}"
+                                                FontSize="Large"
+                                                TextColor="White"
+                                                HorizontalOptions="Center" />
+                                            <Label
+                                                Text="{Binding Path=Description}"
+                                                FontSize="Large"
+                                                TextColor="White"
+                                                HorizontalOptions="Center" />
+                                        </VerticalStackLayout>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </VerticalStackLayout>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

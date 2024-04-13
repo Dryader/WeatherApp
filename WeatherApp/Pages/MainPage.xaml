@@ -5,40 +5,46 @@
              x:Class="WeatherApp.Pages.MainPage"
              Title=""
              BackgroundImageSource="city_background.jpg">
-    
-    <!-- main weather page -->
-    <Grid ColumnDefinitions="*,*,*">
-        <VerticalStackLayout Grid.Column="1" BackgroundColor="#052940">
-            <Label 
-                HorizontalTextAlignment="Center"
-                Margin="50"
-                Text="Weather App"
-                FontAttributes="Bold"/>
+    <ScrollView>
+        <!-- main weather page -->
+        <Grid ColumnDefinitions="*,*,*">
+            <VerticalStackLayout Grid.Column="1" BackgroundColor="#052940">
+                <Label
+                    HorizontalTextAlignment="Center"
+                    Margin="50"
+                    Text="Weather App"
+                    FontAttributes="Bold" />
 
-            <Image x:Name="TempIcon" Source="placeholder_circle.png" MaximumHeightRequest="200"/>
+                <Image x:Name="TempIcon" Source="placeholder_circle.png" MaximumHeightRequest="200" />
 
-            <Entry x:Name="CityEntry" Placeholder="Enter Your Canadian Postal Code" FontSize="Medium" HorizontalTextAlignment="Center"/>
+                <Entry x:Name="CityEntry" Placeholder="Enter Your Canadian Postal Code" FontSize="Medium"
+                       HorizontalTextAlignment="Center" />
 
-            <Button x:Name="WeatherButton" 
-                    Text="Get Weather"
-                    LineBreakMode="WordWrap"
-                    Margin="25, 15, 25, 40"
-                    Clicked="WeatherButton_Clicked"/>
-
-            <Label x:Name="Temperature" HorizontalOptions="Center" Margin="10" />
-            <Label x:Name="Description" HorizontalOptions="Center" Margin="10" />
-            <Label x:Name="Humidity" HorizontalOptions="Center" Margin="10" />
-            <Label x:Name="WindLocal" HorizontalOptions="Center" Margin="10" />
-
-            <Grid ColumnDefinitions="*,*,*">
-                <Button x:Name="ViewForecast"
-                        Grid.Column="1"
-                        Text="Details"
+                <Button x:Name="WeatherButton"
+                        Text="Get Weather"
                         LineBreakMode="WordWrap"
-                        Margin="20"
-                        Clicked="ViewForecastButton_Clicked"/>
-            </Grid>
+                        Margin="25, 15, 25, 40"
+                        Clicked="WeatherButton_Clicked" />
 
-        </VerticalStackLayout>
-    </Grid>
+                <Label x:Name="Temperature" HorizontalOptions="Center" Margin="10" />
+                <Label x:Name="Description" HorizontalOptions="Center" Margin="10" />
+                <Label x:Name="Humidity" HorizontalOptions="Center" Margin="10" />
+                <Label x:Name="WindLocal" HorizontalOptions="Center" Margin="10" />
+                <Label x:Name="FeelsLike" HorizontalOptions="Center" Margin="10" />
+                <Label x:Name="MinTemp" HorizontalOptions="Center" Margin="10" />
+                <Label x:Name="MaxTemp" HorizontalOptions="Center" Margin="10" />
+
+
+                <Grid ColumnDefinitions="*,*,*">
+                    <Button x:Name="ViewForecast"
+                            Grid.Column="1"
+                            Text="5 Day Forecast"
+                            LineBreakMode="WordWrap"
+                            Margin="20"
+                            Clicked="ViewForecastButton_Clicked" />
+                </Grid>
+
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>

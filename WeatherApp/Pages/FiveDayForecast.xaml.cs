@@ -1,6 +1,5 @@
 ﻿using System.Text.Json;
 using WeatherApp.BusinessLogic;
-using Geocoding = WeatherApp.BusinessLogic.GeocodingLogic;
 
 namespace WeatherApp.Pages;
 
@@ -24,6 +23,7 @@ public partial class FiveDayForecast : ContentPage
         var forecastTimes = new List<string>();
         var forecastTemps = new List<double>();
         var iconurllist = new List<string>();
+        var descriptionList = new List<string>();
         // var iconurl = $"https://openweathermap.org/img/wn/{iconurllist}@2x.png";
         foreach (var forecast in forecastList)
             if (forecast.dt_txt.Contains("12:00:00"))
@@ -32,6 +32,7 @@ public partial class FiveDayForecast : ContentPage
                 var day = forecastDate.DayOfWeek.ToString();
                 forecastTimes.Add(day);
                 forecastTemps.Add(forecast.main.temp);
+                descriptionList.Add(forecast.weather[0].description);
                 iconurllist.Add($"https://openweathermap.org/img/wn/{forecast.weather[0].icon}@2x.png");
             }
 
@@ -41,7 +42,8 @@ public partial class FiveDayForecast : ContentPage
             {
                 Day = forecastTimes[i],
                 Temp = forecastTemps[i],
-                Icon = iconurllist[i]
+                Icon = iconurllist[i],
+                Description = descriptionList[i]
             });
 
         forecastListView.ItemsSource = forecastData;
@@ -65,4 +67,6 @@ internal class ForecastData
     public string Day { get; set; }
     public double Temp { get; set; }
     public string Icon { get; set; }
+
+    public string Description { get; set; }
 }
