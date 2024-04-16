@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.Pages.LoginPage"
+             Title=""
+             BackgroundImageSource="city_background.jpg">
+    <ScrollView>
+        <Grid ColumnDefinitions="*,*,*">
+            <VerticalStackLayout Grid.Column="1" BackgroundColor="#052940">
+                <Label
+                    HorizontalTextAlignment="Center"
+                    Margin="50"
+                    Text="Login"
+                    FontAttributes="Bold" />
+                <Entry x:Name="Username" Placeholder="Enter Your Username" FontSize="Medium"
+                       Margin="20, 40, 20, 10"
+               HorizontalTextAlignment="Center" />
+                <Button x:Name="LoginButton"
+                        Text="Login"
+                        LineBreakMode="WordWrap"
+                        Margin="25, 15, 25, 40"
+                        Clicked="LoginButton_Clicked" />
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -6,7 +6,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:WeatherApp.Pages"
     Shell.FlyoutBehavior="Disabled">
-
+    <!--
+    <ShellContent
+        Title="Login Page" 
+        ContentTemplate="{DataTemplate pages:LoginPage}" />
+    -->
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate pages:MainPage}" />
