@@ -63,4 +63,9 @@ public partial class MainPage : ContentPage
         GetWeatherData(locationData.lat, locationData.lon);
         CityEntry.Text = locationData.name;
     }
+
+    private void ShowMap_OnClicked(object? sender, EventArgs e)
+    {
+        Navigation.PushAsync(new MapPage());
+    }
 }
