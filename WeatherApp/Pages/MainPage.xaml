@@ -25,6 +25,14 @@
                         LineBreakMode="WordWrap"
                         Margin="25, 15, 25, 40"
                         Clicked="WeatherButton_Clicked" />
+                <Button Text="Set as Favorite City"
+                        LineBreakMode="WordWrap"
+                        Margin="25, 15, 25, 40"
+                        Clicked="SetFavoriteButton_Clicked" />
+                <Button Text="Favorite City"
+                        LineBreakMode="WordWrap"
+                        Margin="25, 15, 25, 40"
+                        Clicked="FavoriteButton_Clicked" />
 
                 <Label x:Name="Temperature" HorizontalOptions="Center" Margin="10" />
                 <Label x:Name="Description" HorizontalOptions="Center" Margin="10" />
@@ -42,6 +50,14 @@
                             LineBreakMode="WordWrap"
                             Margin="20"
                             Clicked="ViewForecastButton_Clicked" />
+                </Grid>
+                <Grid ColumnDefinitions="*,*,*">
+                    <Button x:Name="ShowMap"
+                            Grid.Column="1"
+                            Text="Show Map"
+                            LineBreakMode="WordWrap"
+                            Margin="20"
+                            Clicked="ShowMap_OnClicked" />
                 </Grid>
 
             </VerticalStackLayout>

@@ -5,9 +5,31 @@ namespace WeatherApp.Pages;
 
 public partial class MainPage : ContentPage
 {
+    private JsonManager _manager;
+    private string _lastCode;
     public MainPage()
     {
         InitializeComponent();
+        BindingContext = this;
+    }
+
+    public MainPage(JsonManager manager) : this()
+    {
+        _manager = manager;
+
+        List<User> users = _manager.GetUsers();
+
+        foreach (User user in users)
+        {
+            if (user.Username == _manager.CurrentUser)
+            {
+                if (user.PostalCode != null)
+                {
+                    CityEntry.Text = user.PostalCode;
+                    GetLocationDataUsingPostalCode();
+                }
+            }
+        }
     }
 
     private void WeatherButton_Clicked(object sender, EventArgs e)
@@ -24,7 +46,7 @@ public partial class MainPage : ContentPage
 
     private void ViewForecastButton_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new FiveDayForecast(CityEntry.Text));
+        Navigation.PushAsync(new FiveDayForecast());
     }
 
     private async void GetWeatherData(double latitude, double longitude)
@@ -61,6 +83,56 @@ public partial class MainPage : ContentPage
         }
 
         GetWeatherData(locationData.lat, locationData.lon);
+        _lastCode = CityEntry.Text;
         CityEntry.Text = locationData.name;
+    }
+
+    private void ShowMap_OnClicked(object? sender, EventArgs e)
+    {
+        Navigation.PushAsync(new MapPage());
+    }
+
+    async private void SetFavoriteButton_Clicked(object sender, EventArgs e)
+    {
+        List<User> users = _manager.GetUsers();
+        if (CityEntry.Text != null)
+        {
+            foreach (User user in users)
+            {
+                if (user.Username == _manager.CurrentUser)
+                {
+                    var url =
+            $"https://api.openweathermap.org/geo/1.0/zip?zip={CityEntry.Text},CA&appid=af814f7c81ec8ac0ad157b953140d72e";
+                    var client = new HttpClient();
+                    var response = await client.GetAsync(url);
+                    var data = await response.Content.ReadAsStringAsync();
+                    var locationData = JsonSerializer.Deserialize<GeocodingLogic.RootObject>(data);
+                    //check if postal code is valid
+                    if (locationData.lat == 0 && locationData.lon == 0)
+                    {
+                        user.PostalCode = _lastCode;
+                    }
+                    user.PostalCode = CityEntry.Text;
+                    _manager.SetUsers(users);
+                }
+            }
+        }
+    }
+
+    private void FavoriteButton_Clicked(object sender, EventArgs e)
+    {
+        List<User> users = _manager.GetUsers();
+
+        foreach (User user in users)
+        {
+            if (user.Username == _manager.CurrentUser)
+            {
+                if (user.PostalCode != null)
+                {
+                    CityEntry.Text = user.PostalCode;
+                    GetLocationDataUsingPostalCode();
+                }
+            }
+        }
     }
 }
